@@ -33,13 +33,24 @@ class DataBaseHelper(
         onCreate(db)
     }
 
+    fun drop(context: Context) {
+        val db = this.writableDatabase
+        val CREATE_TABLE_ALBUM = ("CREATE TABLE " +
+                TABLE_NAME + "("
+                + COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COLUMN_ARTIST_NAME + " TEXT,"
+                + COLUMN_ALBUM_NAME + " TEXT,"
+                + COLUMN_IMAGE_ALBUM + " TEXT)")
+        db.execSQL(CREATE_TABLE_ALBUM)
+        // db.execSQL("DROP TABLE IF EXISTS " + DataBaseHelper.TABLE_NAME)
+    }
+
     fun addAlbum(albumDetails: AlbumDetailDataBase) {
         val db = this.writableDatabase
-
         val values = ContentValues()
         values.put(COLUMN_ARTIST_NAME, albumDetails.artistName)
         values.put(COLUMN_ALBUM_NAME, albumDetails.albumName)
-        values.put(COLUMN_IMAGE_ALBUM,albumDetails.imageAlbum)
+        values.put(COLUMN_IMAGE_ALBUM, albumDetails.mbid)
 
         db.insert(TABLE_NAME, null, values)
         db.close()
@@ -53,10 +64,10 @@ class DataBaseHelper(
 
         while (cursor.moveToNext()) {
             val albumDetails = AlbumDetailDataBase()
-            albumDetails.id = cursor.getInt(0)
-            albumDetails.artistName = cursor.getString(1)
-            albumDetails.albumName = cursor.getString(2)
-            albumDetails.imageAlbum = cursor.getString(3)
+          //  albumDetails.id = cursor.getInt(0)
+            albumDetails.artistName = cursor.getString(0)
+            albumDetails.albumName = cursor.getString(1)
+            albumDetails.mbid = cursor.getString(2)
 
             list.add(albumDetails)
         }

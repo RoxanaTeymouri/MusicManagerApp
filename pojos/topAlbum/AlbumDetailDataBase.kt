@@ -4,15 +4,13 @@ class AlbumDetailDataBase {
     var id: Int? = null
     var artistName: String? = null
     var albumName: String? = null
-    var imageAlbum: String? = null
+    var mbid: String? = null
 
-    constructor(artistName: String, albumName: String, imageAlbum: String) {
+    constructor(artistName: String, albumName: String, mbid: String) {
         this.artistName = artistName
         this.albumName = albumName
-        this.imageAlbum = imageAlbum
+        this.mbid = mbid
     }
-
     constructor()
-
 }
 

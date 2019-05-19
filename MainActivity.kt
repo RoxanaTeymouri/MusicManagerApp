@@ -1,6 +1,5 @@
 package ir.android.musicmanager
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import ir.android.musicmanager.archive.ArchiveAlbumFragment
 import ir.android.musicmanager.base.BaseActivity

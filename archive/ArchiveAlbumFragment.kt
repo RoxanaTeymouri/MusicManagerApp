@@ -42,6 +42,7 @@ class ArchiveAlbumFragment : BaseFragment(), ArchiveAlbumContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val db = DataBaseHelper(context, null)
         presenter.showAlbumsList(db)
     }
